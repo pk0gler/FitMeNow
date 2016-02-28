@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Finish the registartion and return to the login Activity
-                Intent i = new Intent(getBaseContext(), SIgnInActivity.class);
+                Intent i = new Intent(getBaseContext(), LogInActivity.class);
                 startActivity(i);
                 finish();
             }

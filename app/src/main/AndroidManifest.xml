@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SIgnInActivity"
+        <activity android:name=".LogInActivity"
             android:theme="@style/AppTheme.Dark"></activity>
     </application>
 
