@@ -1,4 +1,4 @@
-package app.fitmenow;
+package app.fitmenow.LoginActivities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,74 +11,74 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * This Activity is for logging in
- *
- * @author Philipp Kogler
- * @version 0.9
- */
-public class SignUpActivity extends AppCompatActivity {
-    private static final String TAG = "SignupActivity";
+import app.fitmenow.R;
 
-    private EditText nameText;
+/**
+ *
+ */
+public class LogInActivity extends AppCompatActivity {
+    private static final String TAG = "LogInActivity";
+
     private EditText emailText;
     private EditText passwordText;
-    private Button signupButton;
-    private TextView loginLink;
+    private Button loginButton;
+    private TextView signUpLink;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Declaring and assigning ids
-        nameText = (EditText) findViewById(R.id.input_name);
-        nameText.setVisibility(View.VISIBLE);
         emailText = (EditText) findViewById(R.id.input_email);
         passwordText = (EditText) findViewById(R.id.input_password);
-        signupButton = (Button) findViewById(R.id.btn_signup);
-        loginLink = (TextView) findViewById(R.id.link_login);
-
-        //Adding Listener
-        //When btn signup pressed
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signup();
-            }
-        });
+        loginButton = (Button) findViewById(R.id.btn_signup);
+        loginButton.setText(getResources().getString(R.string.login));
+        signUpLink = (TextView) findViewById(R.id.link_login);
+        signUpLink.setText(getResources().getString(R.string.not_a_member_sign));
 
         //When loginLink pressed
-        loginLink.setOnClickListener(new View.OnClickListener() {
+        signUpLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Finish the registartion and return to the login Activity
-                Intent i = new Intent(getBaseContext(), LogInActivity.class);
+                Intent i = new Intent(getBaseContext(), SignUpActivity.class);
                 startActivity(i);
                 finish();
+            }
+        });
+
+        //Adding Listener
+        //When btn signup pressed
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login();
             }
         });
     }
 
     /**
-     * This class is calles on signup
+     *
      */
-    public void signup() {
-        Log.d(TAG, "Signup");
+    public void login() {
+        Log.d(TAG, "LogIn");
 
         if (this.validate() == false) {
-            onSignupFailed();
+            onLoginFailed();
             return;
         }
 
-        signupButton.setEnabled(false);
+        loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this, R.style.AppTheme_Dark_Dialog);
+        final ProgressDialog progressDialog = new ProgressDialog(LogInActivity.this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account");
+        progressDialog.setMessage(getResources().getString(R.string.login));
         progressDialog.show();
 
-        String name = nameText.getText().toString();
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
@@ -90,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void run() {
                         // On complete call either onSignupSuccess or onSignupFailed
                         // depending on success
-                        onSignupSuccess();
+                        onLoginSuccess();
                         // onSignupFailed();
                         progressDialog.dismiss();
                     }
@@ -98,22 +98,20 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     /**
-     * This Method is called when the signup was succesful
-     * it enables the signup button and sets the Result to OK
+     *
      */
-    public void onSignupSuccess() {
-        signupButton.setEnabled(true);
+    private void onLoginSuccess() {
+        loginButton.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
     }
 
     /**
-     * This Method is called when the signup wasnt succesfull
-     * It shows a Toast with a message
+     *
      */
-    public void onSignupFailed() {
+    private void onLoginFailed() {
         Toast.makeText(getBaseContext(), getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
-        signupButton.setEnabled(true);
+        loginButton.setEnabled(true);
     }
 
     /**
@@ -125,16 +123,8 @@ public class SignUpActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String name = nameText.getText().toString();
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
-
-        if (name.isEmpty() || name.length() < 3) {
-            nameText.setError(getResources().getString(R.string.name_validation_message));
-            valid = false;
-        } else {
-            nameText.setError(null);
-        }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             emailText.setError(getResources().getString(R.string.enter_valid_email));
@@ -152,4 +142,5 @@ public class SignUpActivity extends AppCompatActivity {
 
         return valid;
     }
+
 }
