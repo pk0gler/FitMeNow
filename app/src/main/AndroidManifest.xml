@@ -20,7 +20,7 @@
         <activity
             android:name=".LoginActivities.LogInActivity"
             android:theme="@style/AppTheme.Dark" />
-        <activity android:name=".MainActivity.MainActivity"></activity>
+        <activity android:name=".MainActivity.MainActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

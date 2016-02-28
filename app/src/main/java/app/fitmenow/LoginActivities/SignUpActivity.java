@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import app.fitmenow.MainActivity.MainActivity;
 import app.fitmenow.R;
 
 /**
@@ -106,6 +107,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void onSignupSuccess() {
         signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
