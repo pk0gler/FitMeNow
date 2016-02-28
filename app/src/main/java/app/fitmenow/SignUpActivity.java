@@ -117,6 +117,9 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     /**
+     * This Method validates all data inputs and gives feedback when
+     * parameters are wrong
+     *
      * @return
      */
     public boolean validate() {
