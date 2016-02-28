@@ -17,7 +17,7 @@ import android.widget.Toast;
  * @author Philipp Kogler
  * @version 0.9
  */
-public class LoginActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
 
     private EditText nameText;
@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
         signupButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.AppTheme_Dark_Dialog);
+        final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account");
         progressDialog.show();
