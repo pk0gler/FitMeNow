@@ -17,8 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivities.LogInActivity"
-            android:theme="@style/AppTheme.Dark"></activity>
+        <activity
+            android:name=".LoginActivities.LogInActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity android:name=".MainActivity.MainActivity"></activity>
     </application>
 
 </manifest>
