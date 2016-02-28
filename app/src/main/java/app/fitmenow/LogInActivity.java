@@ -34,9 +34,9 @@ public class LogInActivity extends AppCompatActivity {
         emailText = (EditText) findViewById(R.id.input_email);
         passwordText = (EditText) findViewById(R.id.input_password);
         loginButton = (Button) findViewById(R.id.btn_signup);
-        loginButton.setText("LOG IN");
+        loginButton.setText(getResources().getString(R.string.login));
         signUpLink = (TextView) findViewById(R.id.link_login);
-        signUpLink.setText("Not a member? Sign up");
+        signUpLink.setText(getResources().getString(R.string.not_a_member_sign));
 
         //When loginLink pressed
         signUpLink.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +74,7 @@ public class LogInActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(LogInActivity.this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Login");
+        progressDialog.setMessage(getResources().getString(R.string.login));
         progressDialog.show();
 
         String email = emailText.getText().toString();
@@ -108,7 +108,7 @@ public class LogInActivity extends AppCompatActivity {
      *
      */
     private void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
         loginButton.setEnabled(true);
     }
 
@@ -125,14 +125,14 @@ public class LogInActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailText.setError("enter a valid email address");
+            emailText.setError(getResources().getString(R.string.enter_valid_email));
             valid = false;
         } else {
             emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            passwordText.setError("between 4 and 10 alphanumeric characters");
+            passwordText.setError(getResources().getString(R.string.password_validation_message));
             valid = false;
         } else {
             passwordText.setError(null);

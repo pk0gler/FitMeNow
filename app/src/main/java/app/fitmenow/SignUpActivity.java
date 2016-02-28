@@ -112,7 +112,7 @@ public class SignUpActivity extends AppCompatActivity {
      * It shows a Toast with a message
      */
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), getResources().getString(R.string.login_failed), Toast.LENGTH_LONG).show();
         signupButton.setEnabled(true);
     }
 
@@ -130,21 +130,21 @@ public class SignUpActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
-            nameText.setError("at least 3 characters");
+            nameText.setError(getResources().getString(R.string.name_validation_message));
             valid = false;
         } else {
             nameText.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailText.setError("enter a valid email address");
+            emailText.setError(getResources().getString(R.string.enter_valid_email));
             valid = false;
         } else {
             emailText.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            passwordText.setError("between 4 and 10 alphanumeric characters");
+            passwordText.setError(getResources().getString(R.string.password_validation_message));
             valid = false;
         } else {
             passwordText.setError(null);
