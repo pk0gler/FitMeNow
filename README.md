@@ -9,3 +9,5 @@
 - Add youre own csstomized workout plans
 - See youre progress share it to others
 - Based on several graphics and overviews you can track youre progress efficiently
+
+@octocat :+1: This PR looks great - it's ready to merge! :shipit:
